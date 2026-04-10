@@ -26,13 +26,10 @@ jobs:
       - name: Build JAR and generate Conveyor config
         run: ./gradlew writeConveyorConfig jar
 
-      - name: Install Conveyor
-        run: |
-          curl -L "https://downloads.hydraulic.dev/conveyor/conveyor-latest-linux-amd64.tar.gz" | tar xz
-          sudo mv conveyor /usr/local/bin/conveyor
-
-      - name: Publish beta site
-        run: conveyor --agree-to-license=1 -f ci-conveyor-beta.conf make site
+      - uses: hydraulic-software/conveyor/actions/build@v22.0
+        with:
+          signing_key: ${{ secrets.SIGNING_KEY }}
+          agree_to_license: "1"
+          extra_flags: -f ci-conveyor-beta.conf
         env:
-          SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,38 @@
+name: Publish Kindling Beta
+
+on:
+  push:
+    branches:
+      - beta-*
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: corretto
+          java-version: 21
+          cache: gradle
+
+      - name: Build JAR and generate Conveyor config
+        run: ./gradlew writeConveyorConfig jar
+
+      - name: Install Conveyor
+        run: |
+          curl -L "https://downloads.hydraulic.dev/conveyor/conveyor-latest-linux-amd64.tar.gz" | tar xz
+          sudo mv conveyor /usr/local/bin/conveyor
+
+      - name: Publish beta site
+        run: conveyor --agree-to-license=1 -f ci-conveyor-beta.conf make site
+        env:
+          SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

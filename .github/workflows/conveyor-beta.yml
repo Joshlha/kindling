@@ -34,4 +34,4 @@ jobs:
           command: make copied-site
           extra_flags: -f ci-conveyor-beta.conf
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OAUTH_TOKEN: ${{ secrets.OAUTH_TOKEN }}

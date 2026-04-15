@@ -31,7 +31,7 @@ jobs:
         run: |
           VERSION=$(grep '^app.version' generated.conveyor.conf | sed 's/app.version = //')
           git tag "${VERSION}" ${{ github.sha }} || true
-          git push origin "kindling-beta-${VERSION}" || true
+          git push origin "${VERSION}" || true
 
       - uses: hydraulic-software/conveyor/actions/build@v22.0
         with:

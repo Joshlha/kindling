@@ -27,6 +27,12 @@ jobs:
       - name: Build JAR and generate Conveyor config
         run: ./gradlew writeConveyorConfig jar
 
+      - name: Tag release on current branch
+        run: |
+          VERSION=$(grep '^app.version' generated.conveyor.conf | sed 's/app.version = //')
+          git tag "kindling-beta-${VERSION}" ${{ github.sha }} || true
+          git push origin "kindling-beta-${VERSION}" || true
+
       - uses: hydraulic-software/conveyor/actions/build@v22.0
         with:
           signing_key: ${{ secrets.SIGNING_KEY }}

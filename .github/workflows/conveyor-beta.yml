@@ -30,7 +30,7 @@ jobs:
       - name: Tag release on current branch
         run: |
           VERSION=$(grep '^app.version' generated.conveyor.conf | sed 's/app.version = //')
-          git tag "kindling-beta-${VERSION}" ${{ github.sha }} || true
+          git tag "${VERSION}" ${{ github.sha }} || true
           git push origin "kindling-beta-${VERSION}" || true
 
       - uses: hydraulic-software/conveyor/actions/build@v22.0

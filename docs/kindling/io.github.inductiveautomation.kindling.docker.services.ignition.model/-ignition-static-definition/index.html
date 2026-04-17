@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>IgnitionStaticDefinition</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+            <a class="library-name--link" href="../../../index.html">
+                    kindling
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+1.6.1        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active=""
+                        data-filter=":dokkaHtml/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":dokkaHtml/main"
+                                       data-filter=":dokkaHtml/main"/>
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                        data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    kindling
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="kindling::io.github.inductiveautomation.kindling.docker.services.ignition.model/IgnitionStaticDefinition///PointingToDeclaration//769193423">
+  <div class="breadcrumbs"><a href="../../../index.html">kindling</a><span class="delimiter">/</span><a href="../index.html">io.github.inductiveautomation.kindling.docker.services.ignition.model</a><span class="delimiter">/</span><span class="current">IgnitionStaticDefinition</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Ignition</span><wbr></wbr><span>Static</span><wbr></wbr><span><span>Definition</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">enum </span><a href="index.html">IgnitionStaticDefinition</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="index.html">IgnitionStaticDefinition</a><span class="token operator">&gt; </span>, <a href="../../io.github.inductiveautomation.kindling.docker.services.model/-docker-environment-variable-definition/index.html">DockerEnvironmentVariableDefinition</a></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button><button class="section-tab" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION,EXTENSION_PROPERTY,EXTENSION_FUNCTION">Members &amp; Extensions</button><button class="section-tab" data-togglable="ENTRY">Entries</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="ENTRY">
+        <h2 class="">Entries</h2>
+        <div class="table"><a data-name="-272734672%2FClasslikes%2F769193423" anchor-label="TZ" id="-272734672%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-t-z/index.html">TZ</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-272734672%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-t-z/index.html">TZ</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-452950294%2FClasslikes%2F769193423" anchor-label="ACCEPT_IGNITION_EULA" id="-452950294%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-a-c-c-e-p-t_-i-g-n-i-t-i-o-n_-e-u-l-a/index.html">ACCEPT_IGNITION_EULA</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-452950294%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-a-c-c-e-p-t_-i-g-n-i-t-i-o-n_-e-u-l-a/index.html">ACCEPT_IGNITION_EULA</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1972048494%2FClasslikes%2F769193423" anchor-label="GATEWAY_RESTORE_DISABLED" id="-1972048494%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-g-a-t-e-w-a-y_-r-e-s-t-o-r-e_-d-i-s-a-b-l-e-d/index.html">GATEWAY_RESTORE_DISABLED</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1972048494%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-g-a-t-e-w-a-y_-r-e-s-t-o-r-e_-d-i-s-a-b-l-e-d/index.html">GATEWAY_RESTORE_DISABLED</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1360220875%2FClasslikes%2F769193423" anchor-label="GATEWAY_ADMIN_USERNAME" id="1360220875%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-g-a-t-e-w-a-y_-a-d-m-i-n_-u-s-e-r-n-a-m-e/index.html">GATEWAY_ADMIN_USERNAME</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1360220875%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-g-a-t-e-w-a-y_-a-d-m-i-n_-u-s-e-r-n-a-m-e/index.html">GATEWAY_ADMIN_USERNAME</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1186587088%2FClasslikes%2F769193423" anchor-label="GATEWAY_ADMIN_PASSWORD" id="1186587088%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-g-a-t-e-w-a-y_-a-d-m-i-n_-p-a-s-s-w-o-r-d/index.html">GATEWAY_ADMIN_PASSWORD</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1186587088%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-g-a-t-e-w-a-y_-a-d-m-i-n_-p-a-s-s-w-o-r-d/index.html">GATEWAY_ADMIN_PASSWORD</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2133088517%2FClasslikes%2F769193423" anchor-label="GATEWAY_HTTP_PORT" id="-2133088517%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-g-a-t-e-w-a-y_-h-t-t-p_-p-o-r-t/index.html">GATEWAY_HTTP_PORT</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2133088517%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-g-a-t-e-w-a-y_-h-t-t-p_-p-o-r-t/index.html">GATEWAY_HTTP_PORT</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-439630182%2FClasslikes%2F769193423" anchor-label="GATEWAY_HTTPS_PORT" id="-439630182%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-g-a-t-e-w-a-y_-h-t-t-p-s_-p-o-r-t/index.html">GATEWAY_HTTPS_PORT</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-439630182%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-g-a-t-e-w-a-y_-h-t-t-p-s_-p-o-r-t/index.html">GATEWAY_HTTPS_PORT</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-904527791%2FClasslikes%2F769193423" anchor-label="GATEWAY_GAN_PORT" id="-904527791%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-g-a-t-e-w-a-y_-g-a-n_-p-o-r-t/index.html">GATEWAY_GAN_PORT</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-904527791%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-g-a-t-e-w-a-y_-g-a-n_-p-o-r-t/index.html">GATEWAY_GAN_PORT</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="793500662%2FClasslikes%2F769193423" anchor-label="IGNITION_EDITION" id="793500662%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-i-g-n-i-t-i-o-n_-e-d-i-t-i-o-n/index.html">IGNITION_EDITION</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="793500662%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-i-g-n-i-t-i-o-n_-e-d-i-t-i-o-n/index.html">IGNITION_EDITION</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="23942713%2FClasslikes%2F769193423" anchor-label="IGNITION_LICENSE_KEY" id="23942713%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-i-g-n-i-t-i-o-n_-l-i-c-e-n-s-e_-k-e-y/index.html">IGNITION_LICENSE_KEY</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="23942713%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-i-g-n-i-t-i-o-n_-l-i-c-e-n-s-e_-k-e-y/index.html">IGNITION_LICENSE_KEY</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-399505856%2FClasslikes%2F769193423" anchor-label="IGNITION_ACTIVATION_TOKEN" id="-399505856%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-i-g-n-i-t-i-o-n_-a-c-t-i-v-a-t-i-o-n_-t-o-k-e-n/index.html">IGNITION_ACTIVATION_TOKEN</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-399505856%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-i-g-n-i-t-i-o-n_-a-c-t-i-v-a-t-i-o-n_-t-o-k-e-n/index.html">IGNITION_ACTIVATION_TOKEN</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1134511829%2FClasslikes%2F769193423" anchor-label="EAM_SETUP_INSTALLSELECTION" id="-1134511829%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-e-a-m_-s-e-t-u-p_-i-n-s-t-a-l-l-s-e-l-e-c-t-i-o-n/index.html">EAM_SETUP_INSTALLSELECTION</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1134511829%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-e-a-m_-s-e-t-u-p_-i-n-s-t-a-l-l-s-e-l-e-c-t-i-o-n/index.html">EAM_SETUP_INSTALLSELECTION</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-195702404%2FClasslikes%2F769193423" anchor-label="EAM_AGENT_CONTROLLERSERVERNAME" id="-195702404%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-e-a-m_-a-g-e-n-t_-c-o-n-t-r-o-l-l-e-r-s-e-r-v-e-r-n-a-m-e/index.html">EAM_AGENT_CONTROLLERSERVERNAME</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-195702404%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-e-a-m_-a-g-e-n-t_-c-o-n-t-r-o-l-l-e-r-s-e-r-v-e-r-n-a-m-e/index.html">EAM_AGENT_CONTROLLERSERVERNAME</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1205460846%2FClasslikes%2F769193423" anchor-label="EAM_AGENT_SENDSTATSINTERVAL" id="-1205460846%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-e-a-m_-a-g-e-n-t_-s-e-n-d-s-t-a-t-s-i-n-t-e-r-v-a-l/index.html">EAM_AGENT_SENDSTATSINTERVAL</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1205460846%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-e-a-m_-a-g-e-n-t_-s-e-n-d-s-t-a-t-s-i-n-t-e-r-v-a-l/index.html">EAM_AGENT_SENDSTATSINTERVAL</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2066799900%2FClasslikes%2F769193423" anchor-label="EAM_CONTROLLER_ARCHIVEPATH" id="2066799900%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-e-a-m_-c-o-n-t-r-o-l-l-e-r_-a-r-c-h-i-v-e-p-a-t-h/index.html">EAM_CONTROLLER_ARCHIVEPATH</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2066799900%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-e-a-m_-c-o-n-t-r-o-l-l-e-r_-a-r-c-h-i-v-e-p-a-t-h/index.html">EAM_CONTROLLER_ARCHIVEPATH</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1913916168%2FClasslikes%2F769193423" anchor-label="EAM_CONTROLLER_DATASOURCE" id="-1913916168%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-e-a-m_-c-o-n-t-r-o-l-l-e-r_-d-a-t-a-s-o-u-r-c-e/index.html">EAM_CONTROLLER_DATASOURCE</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1913916168%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-e-a-m_-c-o-n-t-r-o-l-l-e-r_-d-a-t-a-s-o-u-r-c-e/index.html">EAM_CONTROLLER_DATASOURCE</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1169615660%2FClasslikes%2F769193423" anchor-label="EAM_CONTROLLER_ARCHIVELOCATION" id="1169615660%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-e-a-m_-c-o-n-t-r-o-l-l-e-r_-a-r-c-h-i-v-e-l-o-c-a-t-i-o-n/index.html">EAM_CONTROLLER_ARCHIVELOCATION</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1169615660%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-e-a-m_-c-o-n-t-r-o-l-l-e-r_-a-r-c-h-i-v-e-l-o-c-a-t-i-o-n/index.html">EAM_CONTROLLER_ARCHIVELOCATION</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1866458082%2FClasslikes%2F769193423" anchor-label="EAM_CONTROLLER_LOWDISKTHRESHOLDMB" id="1866458082%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-e-a-m_-c-o-n-t-r-o-l-l-e-r_-l-o-w-d-i-s-k-t-h-r-e-s-h-o-l-d-m-b/index.html">EAM_CONTROLLER_LOWDISKTHRESHOLDMB</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1866458082%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-e-a-m_-c-o-n-t-r-o-l-l-e-r_-l-o-w-d-i-s-k-t-h-r-e-s-h-o-l-d-m-b/index.html">EAM_CONTROLLER_LOWDISKTHRESHOLDMB</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1889703020%2FClasslikes%2F769193423" anchor-label="GATEWAY_MODULES_ENABLED" id="1889703020%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-g-a-t-e-w-a-y_-m-o-d-u-l-e-s_-e-n-a-b-l-e-d/index.html">GATEWAY_MODULES_ENABLED</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1889703020%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-g-a-t-e-w-a-y_-m-o-d-u-l-e-s_-e-n-a-b-l-e-d/index.html">GATEWAY_MODULES_ENABLED</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1022672632%2FClasslikes%2F769193423" anchor-label="IGNITION_UID" id="-1022672632%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-i-g-n-i-t-i-o-n_-u-i-d/index.html">IGNITION_UID</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1022672632%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-i-g-n-i-t-i-o-n_-u-i-d/index.html">IGNITION_UID</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1318723834%2FClasslikes%2F769193423" anchor-label="IGNITION_GID" id="1318723834%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-i-g-n-i-t-i-o-n_-g-i-d/index.html">IGNITION_GID</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1318723834%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-i-g-n-i-t-i-o-n_-g-i-d/index.html">IGNITION_GID</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-147807850%2FClasslikes%2F769193423" anchor-label="DISABLE_QUICKSTART" id="-147807850%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-d-i-s-a-b-l-e_-q-u-i-c-k-s-t-a-r-t/index.html">DISABLE_QUICKSTART</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-147807850%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-d-i-s-a-b-l-e_-q-u-i-c-k-s-t-a-r-t/index.html">DISABLE_QUICKSTART</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-127894061%2FClasslikes%2F769193423" anchor-label="GATEWAY_NETWORK_ENABLED" id="-127894061%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-g-a-t-e-w-a-y_-n-e-t-w-o-r-k_-e-n-a-b-l-e-d/index.html">GATEWAY_NETWORK_ENABLED</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-127894061%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-g-a-t-e-w-a-y_-n-e-t-w-o-r-k_-e-n-a-b-l-e-d/index.html">GATEWAY_NETWORK_ENABLED</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1279819715%2FClasslikes%2F769193423" anchor-label="GATEWAY_NETWORK_REQUIRESSL" id="-1279819715%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-g-a-t-e-w-a-y_-n-e-t-w-o-r-k_-r-e-q-u-i-r-e-s-s-l/index.html">GATEWAY_NETWORK_REQUIRESSL</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1279819715%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-g-a-t-e-w-a-y_-n-e-t-w-o-r-k_-r-e-q-u-i-r-e-s-s-l/index.html">GATEWAY_NETWORK_REQUIRESSL</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1985296062%2FClasslikes%2F769193423" anchor-label="GATEWAY_NETWORK_REQUIRETWOWAYAUTH" id="-1985296062%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-g-a-t-e-w-a-y_-n-e-t-w-o-r-k_-r-e-q-u-i-r-e-t-w-o-w-a-y-a-u-t-h/index.html">GATEWAY_NETWORK_REQUIRETWOWAYAUTH</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1985296062%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-g-a-t-e-w-a-y_-n-e-t-w-o-r-k_-r-e-q-u-i-r-e-t-w-o-w-a-y-a-u-t-h/index.html">GATEWAY_NETWORK_REQUIRETWOWAYAUTH</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1597681331%2FClasslikes%2F769193423" anchor-label="GATEWAY_NETWORK_SENDTHREADS" id="1597681331%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-g-a-t-e-w-a-y_-n-e-t-w-o-r-k_-s-e-n-d-t-h-r-e-a-d-s/index.html">GATEWAY_NETWORK_SENDTHREADS</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1597681331%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-g-a-t-e-w-a-y_-n-e-t-w-o-r-k_-s-e-n-d-t-h-r-e-a-d-s/index.html">GATEWAY_NETWORK_SENDTHREADS</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="215087068%2FClasslikes%2F769193423" anchor-label="GATEWAY_NETWORK_RECEIVETHREADS" id="215087068%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-g-a-t-e-w-a-y_-n-e-t-w-o-r-k_-r-e-c-e-i-v-e-t-h-r-e-a-d-s/index.html">GATEWAY_NETWORK_RECEIVETHREADS</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="215087068%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-g-a-t-e-w-a-y_-n-e-t-w-o-r-k_-r-e-c-e-i-v-e-t-h-r-e-a-d-s/index.html">GATEWAY_NETWORK_RECEIVETHREADS</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1340048425%2FClasslikes%2F769193423" anchor-label="GATEWAY_NETWORK_RECEIVEMAX" id="-1340048425%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-g-a-t-e-w-a-y_-n-e-t-w-o-r-k_-r-e-c-e-i-v-e-m-a-x/index.html">GATEWAY_NETWORK_RECEIVEMAX</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1340048425%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-g-a-t-e-w-a-y_-n-e-t-w-o-r-k_-r-e-c-e-i-v-e-m-a-x/index.html">GATEWAY_NETWORK_RECEIVEMAX</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1502983681%2FClasslikes%2F769193423" anchor-label="GATEWAY_NETWORK_ALLOWINCOMING" id="1502983681%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-g-a-t-e-w-a-y_-n-e-t-w-o-r-k_-a-l-l-o-w-i-n-c-o-m-i-n-g/index.html">GATEWAY_NETWORK_ALLOWINCOMING</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1502983681%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-g-a-t-e-w-a-y_-n-e-t-w-o-r-k_-a-l-l-o-w-i-n-c-o-m-i-n-g/index.html">GATEWAY_NETWORK_ALLOWINCOMING</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1402399720%2FClasslikes%2F769193423" anchor-label="GATEWAY_NETWORK_SECURITYPOLICY" id="1402399720%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-g-a-t-e-w-a-y_-n-e-t-w-o-r-k_-s-e-c-u-r-i-t-y-p-o-l-i-c-y/index.html">GATEWAY_NETWORK_SECURITYPOLICY</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1402399720%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-g-a-t-e-w-a-y_-n-e-t-w-o-r-k_-s-e-c-u-r-i-t-y-p-o-l-i-c-y/index.html">GATEWAY_NETWORK_SECURITYPOLICY</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1332436775%2FClasslikes%2F769193423" anchor-label="GATEWAY_NETWORK_WHITELIST" id="-1332436775%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-g-a-t-e-w-a-y_-n-e-t-w-o-r-k_-w-h-i-t-e-l-i-s-t/index.html">GATEWAY_NETWORK_WHITELIST</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1332436775%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-g-a-t-e-w-a-y_-n-e-t-w-o-r-k_-w-h-i-t-e-l-i-s-t/index.html">GATEWAY_NETWORK_WHITELIST</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1829269882%2FClasslikes%2F769193423" anchor-label="GATEWAY_NETWORK_ALLOWEDPROXYHOPS" id="-1829269882%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-g-a-t-e-w-a-y_-n-e-t-w-o-r-k_-a-l-l-o-w-e-d-p-r-o-x-y-h-o-p-s/index.html">GATEWAY_NETWORK_ALLOWEDPROXYHOPS</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1829269882%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-g-a-t-e-w-a-y_-n-e-t-w-o-r-k_-a-l-l-o-w-e-d-p-r-o-x-y-h-o-p-s/index.html">GATEWAY_NETWORK_ALLOWEDPROXYHOPS</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-664945264%2FClasslikes%2F769193423" anchor-label="GATEWAY_NETWORK_WEBSOCKETSESSIONIDLETIMEOUT" id="-664945264%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-g-a-t-e-w-a-y_-n-e-t-w-o-r-k_-w-e-b-s-o-c-k-e-t-s-e-s-s-i-o-n-i-d-l-e-t-i-m-e-o-u-t/index.html">GATEWAY_NETWORK_WEBSOCKETSESSIONIDLETIMEOUT</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-664945264%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-g-a-t-e-w-a-y_-n-e-t-w-o-r-k_-w-e-b-s-o-c-k-e-t-s-e-s-s-i-o-n-i-d-l-e-t-i-m-e-o-u-t/index.html">GATEWAY_NETWORK_WEBSOCKETSESSIONIDLETIMEOUT</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1083178056%2FClasslikes%2F769193423" anchor-label="GATEWAY_ENCODING_KEY" id="-1083178056%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-g-a-t-e-w-a-y_-e-n-c-o-d-i-n-g_-k-e-y/index.html">GATEWAY_ENCODING_KEY</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1083178056%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-g-a-t-e-w-a-y_-e-n-c-o-d-i-n-g_-k-e-y/index.html">GATEWAY_ENCODING_KEY</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1453081355%2FClasslikes%2F769193423" anchor-label="GATEWAY_ENCODING_KEY_FILE" id="1453081355%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-g-a-t-e-w-a-y_-e-n-c-o-d-i-n-g_-k-e-y_-f-i-l-e/index.html">GATEWAY_ENCODING_KEY_FILE</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1453081355%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-g-a-t-e-w-a-y_-e-n-c-o-d-i-n-g_-k-e-y_-f-i-l-e/index.html">GATEWAY_ENCODING_KEY_FILE</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="367617299%2FClasslikes%2F769193423" anchor-label="IGNITION_ROOT_KEY_PASSWORD_FILE" id="367617299%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-i-g-n-i-t-i-o-n_-r-o-o-t_-k-e-y_-p-a-s-s-w-o-r-d_-f-i-l-e/index.html">IGNITION_ROOT_KEY_PASSWORD_FILE</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="367617299%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-i-g-n-i-t-i-o-n_-r-o-o-t_-k-e-y_-p-a-s-s-w-o-r-d_-f-i-l-e/index.html">IGNITION_ROOT_KEY_PASSWORD_FILE</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-983057232%2FClasslikes%2F769193423" anchor-label="IGNITION_ROOT_KEY_PASSWORD" id="-983057232%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-i-g-n-i-t-i-o-n_-r-o-o-t_-k-e-y_-p-a-s-s-w-o-r-d/index.html">IGNITION_ROOT_KEY_PASSWORD</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-983057232%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-i-g-n-i-t-i-o-n_-r-o-o-t_-k-e-y_-p-a-s-s-w-o-r-d/index.html">IGNITION_ROOT_KEY_PASSWORD</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1257163121%2FClasslikes%2F769193423" anchor-label="ACCEPT_MODULE_CERTS" id="1257163121%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-a-c-c-e-p-t_-m-o-d-u-l-e_-c-e-r-t-s/index.html">ACCEPT_MODULE_CERTS</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1257163121%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-a-c-c-e-p-t_-m-o-d-u-l-e_-c-e-r-t-s/index.html">ACCEPT_MODULE_CERTS</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-720516552%2FClasslikes%2F769193423" anchor-label="ACCEPT_MODULE_LICENSES" id="-720516552%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-a-c-c-e-p-t_-m-o-d-u-l-e_-l-i-c-e-n-s-e-s/index.html">ACCEPT_MODULE_LICENSES</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-720516552%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><a href="-a-c-c-e-p-t_-m-o-d-u-l-e_-l-i-c-e-n-s-e-s/index.html">ACCEPT_MODULE_LICENSES</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="-2063341172%2FProperties%2F769193423" anchor-label="default" id="-2063341172%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../io.github.inductiveautomation.kindling.docker.services.model/-docker-environment-variable-definition/default.html"><span><span>default</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2063341172%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="../../io.github.inductiveautomation.kindling.docker.services.model/-docker-environment-variable-definition/default.html">default</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1620260804%2FProperties%2F769193423" anchor-label="entries" id="1620260804%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="entries.html"><span><span>entries</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1620260804%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="entries.html">entries</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.enums/-enum-entries/index.html">EnumEntries</a><span class="token operator">&lt;</span><a href="index.html">IgnitionStaticDefinition</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns a representation of an immutable list of all enum entries, in the order they're declared.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-529737949%2FProperties%2F769193423" anchor-label="minimumVersion" id="-529737949%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../io.github.inductiveautomation.kindling.docker.services.model/-docker-environment-variable-definition/minimum-version.html"><span>minimum</span><wbr></wbr><span><span>Version</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-529737949%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="../../io.github.inductiveautomation.kindling.docker.services.model/-docker-environment-variable-definition/minimum-version.html">minimumVersion</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-372974862%2FProperties%2F769193423" anchor-label="name" id="-372974862%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../io.github.inductiveautomation.kindling.utils/-major-version/-eight-one/index.html#-372974862%2FProperties%2F769193423"><span><span>name</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-372974862%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../../io.github.inductiveautomation.kindling.utils/-major-version/-eight-one/index.html#-372974862%2FProperties%2F769193423">name</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="288883062%2FProperties%2F769193423" anchor-label="options" id="288883062%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="options.html"><span><span>options</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="288883062%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="options.html">options</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-739389684%2FProperties%2F769193423" anchor-label="ordinal" id="-739389684%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../io.github.inductiveautomation.kindling.utils/-major-version/-eight-one/index.html#-739389684%2FProperties%2F769193423"><span><span>ordinal</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-739389684%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../../io.github.inductiveautomation.kindling.utils/-major-version/-eight-one/index.html#-739389684%2FProperties%2F769193423">ordinal</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="839478102%2FFunctions%2F769193423" anchor-label="toDetail" id="839478102%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../io.github.inductiveautomation.kindling.utils/to-detail.html"><span>to</span><wbr></wbr><span><span>Detail</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="839478102%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html">Serializable</a><span class="token punctuation">.</span><a href="../../io.github.inductiveautomation.kindling.utils/to-detail.html"><span class="token function">toDetail</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../io.github.inductiveautomation.kindling.core/-detail/index.html">Detail</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-130522024%2FFunctions%2F769193423" anchor-label="valueOf" id="-130522024%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="value-of.html"><span>value</span><wbr></wbr><span><span>Of</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-130522024%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="value-of.html"><span class="token function">valueOf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">value<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">IgnitionStaticDefinition</a></div><div class="brief "><p class="paragraph">Returns the enum constant of this type with the specified name. The string must match exactly an identifier used to declare an enum constant in this type. (Extraneous whitespace characters are not permitted.)</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2054564708%2FFunctions%2F769193423" anchor-label="values" id="2054564708%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="values.html"><span><span>values</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2054564708%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="values.html"><span class="token function">values</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span><a href="index.html">IgnitionStaticDefinition</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns an array containing the constants of this enum type, in the order they're declared.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2026 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

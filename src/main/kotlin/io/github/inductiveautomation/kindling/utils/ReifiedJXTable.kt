@@ -38,6 +38,16 @@ class ReifiedJXTable<T : TableModel>(
             destinationFunction = ::packAll,
         )
 
+    /**
+     * Supplies a tooltip for a whole row, given a **model** row index. Takes precedence over the
+     * default cell tooltip when it returns non-null.
+     *
+     * This lives on the table instance rather than on a [Column] because `ColumnList`s are
+     * `data object` singletons shared by every open tab -- per-tab state on a column would leak
+     * one tab's data into another's table.
+     */
+    var rowToolTipProvider: ((modelRow: Int) -> String?)? = null
+
     init {
         if (columns != null) {
             columnFactory = columns.toColumnFactory()
@@ -55,6 +65,17 @@ class ReifiedJXTable<T : TableModel>(
 
         packLater()
         actionMap.remove("find")
+    }
+
+    override fun getToolTipText(event: MouseEvent): String? {
+        val provider = rowToolTipProvider
+        if (provider != null) {
+            val viewRow = rowAtPoint(event.point)
+            if (viewRow >= 0) {
+                provider(convertRowIndexToModel(viewRow))?.let { return it }
+            }
+        }
+        return super.getToolTipText(event)
     }
 
     override fun createDefaultTableHeader(): JTableHeader? = object : JXTableHeader(columnModel) {

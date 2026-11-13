@@ -4,6 +4,7 @@ import com.formdev.flatlaf.FlatLightLaf
 import com.formdev.flatlaf.themes.FlatMacLightLaf
 import com.formdev.flatlaf.util.SystemInfo
 import com.github.weisj.jsvg.parser.SVGLoader
+import io.github.inductiveautomation.kindling.ai.AiPreferences
 import io.github.inductiveautomation.kindling.core.Preference.Companion.PreferenceCheckbox
 import io.github.inductiveautomation.kindling.core.Preference.Companion.preference
 import io.github.inductiveautomation.kindling.idb.IdbViewer
@@ -304,6 +305,7 @@ data object Kindling {
             add(General)
             add(UI)
             addAll(Tool.tools.filterIsInstance<PreferenceCategory>())
+            add(AiPreferences)
             // put advanced last
             add(Advanced)
         }

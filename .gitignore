@@ -5,3 +5,9 @@
 **build/
 
 output/
+
+# Local credentials - never commit. Kindling is a public repo.
+*.env
+!*.env.template
+
+.claude/

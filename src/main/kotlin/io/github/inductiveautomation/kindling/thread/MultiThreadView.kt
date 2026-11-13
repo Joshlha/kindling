@@ -2,6 +2,11 @@ package io.github.inductiveautomation.kindling.thread
 
 import com.formdev.flatlaf.extras.FlatSVGIcon
 import com.jidesoft.comparator.AlphanumComparator
+import io.github.inductiveautomation.kindling.ai.AiAvailability
+import io.github.inductiveautomation.kindling.ai.AiPreferences
+import io.github.inductiveautomation.kindling.ai.LlmException
+import io.github.inductiveautomation.kindling.ai.PromptTooLargeException
+import io.github.inductiveautomation.kindling.ai.ui.ConsentDialog
 import io.github.inductiveautomation.kindling.core.ClipboardTool
 import io.github.inductiveautomation.kindling.core.Detail
 import io.github.inductiveautomation.kindling.core.Detail.BodyLine
@@ -14,6 +19,13 @@ import io.github.inductiveautomation.kindling.core.PreferenceCategory
 import io.github.inductiveautomation.kindling.core.ToolOpeningException
 import io.github.inductiveautomation.kindling.core.ToolPanel
 import io.github.inductiveautomation.kindling.core.add
+import io.github.inductiveautomation.kindling.thread.ai.FindingColors
+import io.github.inductiveautomation.kindling.thread.ai.Severity
+import io.github.inductiveautomation.kindling.thread.ai.ThreadAnalysisService
+import io.github.inductiveautomation.kindling.thread.ai.ThreadChatPanel
+import io.github.inductiveautomation.kindling.thread.ai.ThreadDumpContext
+import io.github.inductiveautomation.kindling.thread.ai.ThreadFindings
+import io.github.inductiveautomation.kindling.thread.ai.UnparseableAnalysisException
 import io.github.inductiveautomation.kindling.thread.comparison.ThreadComparisonPane
 import io.github.inductiveautomation.kindling.thread.model.Thread
 import io.github.inductiveautomation.kindling.thread.model.ThreadDump
@@ -36,21 +48,29 @@ import io.github.inductiveautomation.kindling.utils.escapeHtml
 import io.github.inductiveautomation.kindling.utils.rowIndices
 import io.github.inductiveautomation.kindling.utils.selectedRowIndices
 import io.github.inductiveautomation.kindling.utils.toBodyLine
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import net.miginfocom.swing.MigLayout
 import org.jdesktop.swingx.JXSearchField
 import org.jdesktop.swingx.table.ColumnControlButton.COLUMN_CONTROL_MARKER
 import java.awt.Desktop
+import java.awt.EventQueue
 import java.nio.file.Path
 import javax.swing.ButtonGroup
+import javax.swing.JButton
 import javax.swing.JLabel
 import javax.swing.JMenu
 import javax.swing.JMenuBar
 import javax.swing.JPanel
 import javax.swing.JPopupMenu
 import javax.swing.JRadioButton
+import javax.swing.JSplitPane
 import javax.swing.ListSelectionModel
 import javax.swing.SortOrder
 import javax.swing.UIManager
@@ -125,16 +145,40 @@ class MultiThreadView(
 
             selectionMode = ListSelectionModel.SINGLE_SELECTION
 
+            // AI findings are added first so the deadlock highlighter, which is ground truth from
+            // the dump rather than inference, paints over them.
+            for (severity in Severity.entries) {
+                addHighlighter(
+                    ColorHighlighter(
+                        fgSupplier = { FindingColors.foreground(severity) },
+                        bgSupplier = { FindingColors.background(severity) },
+                    ) { _, adapter ->
+                        val modelRow = adapter.convertRowIndexToModel(adapter.row)
+                        findings[model[modelRow, model.columns.id]]?.severity == severity
+                    },
+                )
+            }
+
             addHighlighter(
                 ColorHighlighter(
                     UIManager.getColor("Actions.Red"),
                     null,
                 ) { _, adapter ->
+                    // adapter.row is a *view* index; without this conversion the wrong rows get
+                    // coloured as soon as the user sorts by any column.
+                    val modelRow = adapter.convertRowIndexToModel(adapter.row)
                     threadDumps.any { threadDump ->
-                        model[adapter.row, model.columns.id] in threadDump.deadlockIds
+                        model[modelRow, model.columns.id] in threadDump.deadlockIds
                     }
                 },
             )
+
+            rowToolTipProvider = { modelRow ->
+                findings[model[modelRow, model.columns.id]]?.let { finding ->
+                    "<html><b>${finding.severity} &middot; ${finding.category}</b><br>" +
+                        "${finding.reason.escapeHtml()}</html>"
+                }
+            }
 
             fun toggleMarkAllWithSameValue(property: Column<ThreadLifespan, *>) {
                 val selectedRowIndex = selectedRowIndices().first()
@@ -184,6 +228,20 @@ class MultiThreadView(
             }
             actionMap.put("$COLUMN_CONTROL_MARKER.clearAllMarks", clearAllMarks)
 
+            if (AiAvailability.isConfigured) {
+                actionMap.put("$COLUMN_CONTROL_MARKER.runAiAnalysis", analyzeAction)
+                actionMap.put(
+                    "$COLUMN_CONTROL_MARKER.markThreadsOfInterest",
+                    Action(name = "Mark threads of interest") {
+                        for (lifespan in model.threadData) {
+                            val flagged = lifespan.any { thread -> thread != null && findings[thread.id] != null }
+                            if (flagged) lifespan.forEach { thread -> thread?.marked = true }
+                        }
+                        model.fireTableDataChanged()
+                    },
+                )
+            }
+
             attachPopupMenu table@{ event ->
                 val rowAtPoint = rowAtPoint(event.point)
                 selectionModel.setSelectionInterval(rowAtPoint, rowAtPoint)
@@ -223,6 +281,41 @@ class MultiThreadView(
     }
 
     private var comparison = ThreadComparisonPane(threadDumps.size, threadDumps[0].version)
+
+    /** Cancelled in [removeNotify] so a closed tab does not leave a request running. */
+    private val aiScope = CoroutineScope(Dispatchers.Default + SupervisorJob())
+
+    private val dumpContext = ThreadDumpContext(paths, threadDumps)
+
+    private val findings = ThreadFindings()
+
+    private val chatPanel: ThreadChatPanel by lazy {
+        ThreadChatPanel(
+            context = dumpContext,
+            findings = findings,
+            scope = EDT_SCOPE,
+            onThreadSelected = ::selectThreadById,
+        )
+    }
+
+    /**
+     * Built unconditionally but neutralised when AI is off, so the layout with the feature
+     * disabled is pixel-identical to before it existed and nothing AI-related is constructed.
+     */
+    private val aiPanelHost = JPanel(MigLayout("ins 0, fill, hidemode 3"))
+
+    private lateinit var aiSplit: JSplitPane
+
+    private var analysisJob: Job? = null
+
+    private val analyzeAction = Action(
+        name = "Analyze Threads",
+        description = "Ask the configured AI model to identify threads of interest",
+    ) {
+        runAnalysis()
+    }
+
+    private val analyzeButton = JButton(analyzeAction)
 
     private val exportMenu = run {
         val firstThreadDump = threadDumps.first()
@@ -367,21 +460,37 @@ class MultiThreadView(
             }
         }
 
+        findings.addChangeListener {
+            EDT_SCOPE.launch {
+                analyzeButton.text = if (findings.state == ThreadFindings.State.Running) "Stop" else "Analyze Threads"
+                mainTable.repaint()
+            }
+        }
+
         add(JLabel("Version: ${threadDumps.first().version}"))
         add(threadCountLabel)
         add(exportButton, "gapright 8")
+        add(analyzeButton, "gapright 8")
         add(searchField, "wmin 300, wrap")
         add(
-            VerticalSplitPane(
-                HorizontalSplitPane(
-                    sidebar,
-                    FlatScrollPane(mainTable),
-                    resizeWeight = 0.1,
+            HorizontalSplitPane(
+                VerticalSplitPane(
+                    HorizontalSplitPane(
+                        sidebar,
+                        FlatScrollPane(mainTable),
+                        resizeWeight = 0.1,
+                    ),
+                    comparison,
                 ),
-                comparison,
-            ),
+                aiPanelHost,
+                // Give all slack to the existing content; the chat column keeps its width.
+                resizeWeight = 1.0,
+            ).also { aiSplit = it },
             "push, grow, span, wmax 100%",
         )
+
+        MultiThreadViewer.AiChatPanel.addChangeListener { syncAiVisibility() }
+        syncAiVisibility()
 
         comparison.threads = mainTable.model.threadData.first()
 
@@ -391,6 +500,104 @@ class MultiThreadView(
     private val initialized = true
 
     override val icon = MultiThreadViewer.icon
+
+    private val aiEnabled: Boolean
+        get() = AiAvailability.isConfigured && MultiThreadViewer.AiChatPanel.currentValue
+
+    private fun syncAiVisibility() {
+        val enabled = aiEnabled
+
+        if (enabled && aiPanelHost.componentCount == 0) {
+            aiPanelHost.add(chatPanel, "push, grow")
+        }
+
+        aiPanelHost.isVisible = enabled
+        analyzeButton.isVisible = AiAvailability.isConfigured
+        analyzeButton.toolTipText = AiAvailability.unavailableReason
+
+        if (::aiSplit.isInitialized) {
+            // A zero-size divider removes the grab handle entirely; JSplitPane then gives all the
+            // space to the one visible child.
+            aiSplit.dividerSize = if (enabled) UIManager.getInt("SplitPane.dividerSize") else 0
+            aiSplit.isOneTouchExpandable = enabled
+            if (enabled) aiSplit.setDividerLocation(0.72)
+        }
+
+        revalidate()
+    }
+
+    private fun selectThreadById(id: Long) {
+        for (i in mainTable.model.rowIndices) {
+            if (mainTable.model[i, mainTable.model.columns.id] == id) {
+                val rowIndex = mainTable.convertRowIndexToView(i)
+                mainTable.selectionModel.setSelectionInterval(rowIndex, rowIndex)
+                mainTable.scrollRectToVisible(mainTable.getCellRect(rowIndex, 0, true))
+                break
+            }
+        }
+    }
+
+    private fun runAnalysis() {
+        if (analysisJob?.isActive == true) {
+            analysisJob?.cancel()
+            return
+        }
+
+        if (!AiAvailability.isConfigured) return
+        if (!ConsentDialog.ensureConsent(this)) return
+
+        findings.state = ThreadFindings.State.Running
+
+        analysisJob = aiScope.launch {
+            val service = ThreadAnalysisService(
+                client = AiAvailability.client(),
+                model = AiAvailability.model,
+                contextProvider = AiAvailability.contextProvider(),
+                retrievalMaxChars = AiPreferences.KapaMaxChars.currentValue,
+            )
+
+            val result = service.analyze(dumpContext)
+
+            EDT_SCOPE.launch {
+                if (!isDisplayable) return@launch
+
+                result.fold(
+                    onSuccess = { analysis ->
+                        findings.set(
+                            findings = analysis.report.findings,
+                            summary = analysis.report.summary,
+                            discardedIds = analysis.discardedIds,
+                            sources = analysis.sources,
+                        )
+                    },
+                    onFailure = { error ->
+                        if (error is CancellationException) {
+                            findings.state = ThreadFindings.State.Idle
+                        } else {
+                            findings.state = ThreadFindings.State.Failed(
+                                when (error) {
+                                    is PromptTooLargeException -> error.detail
+                                    is LlmException -> error.userMessage
+                                    is UnparseableAnalysisException -> error.message.orEmpty()
+                                    else -> error.message ?: error.javaClass.simpleName
+                                },
+                                raw = (error as? UnparseableAnalysisException)?.raw,
+                            )
+                        }
+                    },
+                )
+            }
+        }
+    }
+
+    override fun removeNotify() {
+        super.removeNotify()
+        // TabStrip's "Float" action removes and re-adds within one EDT event, so defer the check
+        // rather than cancelling eagerly and killing a request the user is still waiting on.
+        EventQueue.invokeLater {
+            if (!isDisplayable) aiScope.cancel()
+        }
+    }
 
     override fun customizePopupMenu(menu: JPopupMenu) {
         menu.addSeparator()
@@ -524,6 +731,17 @@ data object MultiThreadViewer : MultiTool, ClipboardTool, PreferenceCategory {
         SIDE_BY_SIDE,
     }
 
+    val AiChatPanel: Preference<Boolean> = preference(
+        name = "AI Assistant Panel",
+        serialKey = "aiChatPanel",
+        description = "Show a collapsible panel for asking an AI model questions about the thread " +
+            "dumps in a tab. Configure the model under Preferences → AI Assistant.",
+        default = true,
+        editor = {
+            PreferenceCheckbox("Show the AI assistant panel in the thread view")
+        },
+    )
+
     override val displayName = "Thread View"
-    override val preferences = listOf(ShowNullThreads, ShowEmptyValues, DefaultDiffView)
+    override val preferences = listOf(ShowNullThreads, ShowEmptyValues, DefaultDiffView, AiChatPanel)
 }

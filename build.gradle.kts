@@ -35,6 +35,7 @@ dependencies {
     api(libs.jfreechart)
     api(libs.questdb)
     api(libs.rsyntaxtextarea)
+    api(libs.commonmark)
     api(libs.bundles.jackson)
     runtimeOnly(libs.bundles.ia.transitive)
     testImplementation(libs.bundles.kotest)
